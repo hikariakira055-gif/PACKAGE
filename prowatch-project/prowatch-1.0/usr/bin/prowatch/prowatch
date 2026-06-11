@@ -1,0 +1,171 @@
+#!/bin/bash
+declare -A ___pid___=$(ps -e | awk -F " " '{print $1}')
+declare -A user___=$(cat /etc/passwd | cut -d ':' -f1)
+sys_log="../../../var/log/prowatch.log"
+
+while true; do
+
+echo ======= PROWATCH ========
+echo "1. Afficher les 10 proc consommateur de CPU"
+echo "2. Afficher les 10 proc consommateur de RAM"
+echo "3. Rechercher processus par nom"
+echo "4. Afficher les processus d'un utilisateur"
+echo "5. Arreter roprement un processus"
+echo "6. Force l arret d'un utilisateur"
+echo "7. Modifier la prioriter d'un processus" 
+echo "8. Quitter"
+
+echo -n "votre choix : "
+read choix
+
+if [ $choix -eq 1 ]; then
+clear
+    ps aux --sort=-%cpu | head -n 11
+elif [ $choix -eq 2 ]; then
+clear
+    ps aux --sort=-%mem | head -n 11
+
+elif [ $choix -eq 3 ]; then
+clear
+    echo -n "Le nom du processus :  "
+    read name
+
+    if [ "$name" = "" ]; then
+        echo champ de nom vide
+        
+        else
+
+        pgrep -a "$nom"
+    fi
+
+elif [ $choix -eq 4 ]; then
+clear
+    echo -n "nom de l'utilisateur : "
+    read name1
+    
+
+    for user0 in $user___; do
+
+        if [ "$name1" = "$user0" ]; then
+            is_here1=1
+        fi
+
+    done
+
+    if [ $is_here1 -eq 1 ]; then
+
+        ps -aux | grep "$name1"
+
+    else
+
+        echo user inexistant
+
+    fi
+
+    
+elif [ $choix -eq 5 ]; then
+clear
+    echo -n "PID : "
+    read pid 
+
+    for a in $___pid___; do
+        if [ "$pid" = "$a" ]; then
+          is_here=1
+        fi
+    done
+
+    if [ $is_here -eq 1 ]; then
+
+    kill -SIGTERM $pid
+    echo $pid killer avec succes
+
+    else
+
+    echo pid invalide
+
+    fi
+
+
+    # if [ "$pid" = "" ]; then
+
+    #     echo champ de pid vide
+    # else
+    
+    # fi
+
+    #journalisation
+
+    __name=$(whoami)
+    date=$(date +%Y/%m/%d-%H:%M:%S)
+
+    msg=$(echo "$date -- $__name send <SIGTERM> to $pid")
+    echo $msg >> $sys_log
+
+elif [ $choix -eq 6 ]; then
+clear
+    echo -n "PID : "
+    read pid2 
+
+    for a in $___pid___; do
+        if [ "$pid2" = "$a" ]; then
+          is_here=1
+        fi
+    done
+
+    if [ $is_here -eq 1 ]; then
+
+    kill -SIGKILL $pid2
+    echo $pid2 killer avec succes
+
+    else
+
+    echo pid invalide
+
+    fi
+
+    __name=$(whoami)
+    date=$(date +%Y/%m/%d-%H:%M:%S)
+
+    msg=$(echo "$date -- $__name send <SIGKILL> to $pid")
+    echo $msg >> $sys_log
+
+elif [ $choix -eq 7 ]; then
+clear
+    echo -n PID
+    read __pid__
+    echo -n new niceness : 
+    read nice
+
+    for a in $___pid___; do
+        if [ "$__pid__" = "$a" ]; then
+          is_here=1
+        fi
+    done
+
+    if [ $is_here -eq 1 ]; then
+
+         if (( $nice <= -20  || $nice > 19 )); then
+
+        echo valeur de niceness invalide
+        else
+            renice $nice -p $__pid__
+            echo "$__pid__ a maintenant $nice"
+        fi
+
+    else
+
+        echo pid invalide
+
+    fi
+
+    __name=$(whoami)
+    date=$(date +%Y/%m/%d-%H:%M:%S)
+
+    msg=$(echo "$date -- $__name changed the nice of $pid to $nice")
+    echo $msg >> $sys_log
+
+elif [ $choix -eq 8 ]; then
+clear
+    exit 1
+fi
+done

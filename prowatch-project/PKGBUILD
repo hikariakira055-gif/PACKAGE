@@ -1,0 +1,17 @@
+pkgname=prowatch
+pkgver=1.0
+pkgrel=1
+arch=('any')
+licence=('GPL')
+
+source=()
+sha256sums=()
+
+package(){
+
+    cd "$startdir/prowatch-1.0"
+
+
+    cp -a * "$pkgdir/"
+
+}
