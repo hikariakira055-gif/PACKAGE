@@ -72,3 +72,52 @@ void pop_back(Vector *array, int value)
      }
      
 }
+void sort(Vector *array, char types)
+{
+
+    
+
+    if (types == 'c')
+    {
+       int tmp = 0; 
+        for (int  i = 0; i < array->size; i++)
+        {
+            for (int  j = i + 1; j < array->size; j++)
+            {
+                if (array->array[i] > array->array[j])
+                {
+
+                    tmp = array->array[i];
+                    array->array[i] = array->array[j];
+                    array->array[j] = tmp;
+
+                } 
+            }
+        } 
+    }
+    else if(types == 'd')
+    {
+        int tmp = 0; 
+        for (int  i = 0; i < array->size; i++)
+        {
+            for (int  j = i + 1; j < array->size; j++)
+            {
+                if (array->array[i] < array->array[j])
+                {
+
+                    tmp = array->array[i];
+                    array->array[i] = array->array[j];
+                    array->array[j] = tmp;
+
+                } 
+            }
+        }
+    }
+    else
+    {
+        printf("invalide char types\n");
+    }
+    
+
+
+}

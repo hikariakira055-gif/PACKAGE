@@ -17,6 +17,8 @@ void push_back(Vector *array, int value);
 void pop_back(Vector *array, int value);
 void clear(Vector *array);
 void init(Vector *array);
+void sort(Vector *array, char types);
+
 
 
 
