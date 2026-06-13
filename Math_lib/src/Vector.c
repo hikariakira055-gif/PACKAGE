@@ -1,4 +1,5 @@
 #include "../include/Vector.h"
+#include "../include/Vector2D.h"
 
 void push_back(Vector *array, int value)
 {
@@ -118,6 +119,30 @@ void sort(Vector *array, char types)
         printf("invalide char types\n");
     }
     
+}
+Vector2D find(Vector *array, int cible)
+{
+    int counter=0;
+    Vector2D result;
 
+    for (int i = 0; i < array->size; i++)
+    {
+        if (array->array[i] == cible)
+        {
+            counter++;
+        } 
+    }
+
+    if (counter > 0)
+    {
+        result.x = counter;
+        result.y = 1;
+    }
+    else 
+    {
+        result.x = counter;
+        result.y = 0;
+    }
+    
 
 }

@@ -9,12 +9,12 @@ void __start(void)
     
 
 
-    push_back(&tab, 6);
-    push_back(&tab, 5);
-    push_back(&tab, 4);
-    push_back(&tab, 3);
-    push_back(&tab, 2);
     push_back(&tab, 1);
+    push_back(&tab, 2);
+    push_back(&tab, 3);
+    push_back(&tab, 4);
+    push_back(&tab, 5);
+    push_back(&tab, 6);
 
     printf("%d\n", tab.size);
     printf("\n");
@@ -26,7 +26,7 @@ void __start(void)
     
     printf("\n");
 
-    sort(&tab, 'c');
+    sort(&tab, 'd');
 
     for (int i = 0; i < tab.size; i++)
     {

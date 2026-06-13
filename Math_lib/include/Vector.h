@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../include/Vector2D.h"
 
 
 typedef struct Vector
@@ -18,6 +19,7 @@ void pop_back(Vector *array, int value);
 void clear(Vector *array);
 void init(Vector *array);
 void sort(Vector *array, char types);
+Vector2D find(Vector*array, int cible);
 
 
 
