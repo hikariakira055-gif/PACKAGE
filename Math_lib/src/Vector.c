@@ -32,7 +32,7 @@ void pop_back(Vector *array, int value)
 {
     int counter = 0;
     
-     for (int i = 0; i < array->size; i++)
+     for (int i = 0; i < (array->size); i++)
      {
         if (array->array[i] == value)
         {
@@ -43,11 +43,15 @@ void pop_back(Vector *array, int value)
      int new_size = array->size - counter;
 
      int *tmp = realloc(array->array, new_size*sizeof(int));
-
-
-     for (int  i = 0; i < array->size; i++)
+     if (!tmp)
      {
-            int c__ = 0;
+        printf("There is an probleme ! ");
+     }
+     
+
+     int c__ = 0;
+     for (int  i = 0; i < (array->size); i++)
+     {
 
             if(array->array[i] != value)
             {
@@ -62,7 +66,9 @@ void pop_back(Vector *array, int value)
      
      array->size = array->size - counter;
      array->array = tmp;
-
-    
+     for (int i = 0; i < (new_size); i++)
+     {
+        array->array[i] = tmp[i];    
+     }
      
 }
