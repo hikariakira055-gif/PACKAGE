@@ -203,8 +203,47 @@ int string_cmp(char *word1, char *word2) // a rectifier !
     return (__val__);
 }
 
-void dico(String *chain)
+void dico(String *chain, char *types)
 {
+    char *all__;
+    if (strcmp(types, "az"))
+    {
+            for (int  i = 0; i < chain->size; i++)
+        {
+            for (int  j = i + 1; j < chain->size; j++)
+            {
+                if (string_cmp(chain->string[i], chain->string[j]) == 0)
+                {
+                    *all__ = chain->string[i];
+                    chain->string[i] = chain->string[j];
+                    chain->string[j] = all__;
+                }
+                
+            }
+            
+        }
+        
+    }
+    else if(strcmp(types, "za"))
+    {
+        for (int  i = 0; i < chain->size; i++)
+    {
+        for (int  j = i + 1; j < chain->size; j++)
+        {
+            if (string_cmp(chain->string[j], chain->string[i]) == 0)
+            {
+                *all__ = chain->string[i];
+                chain->string[i] = chain->string[j];
+                chain->string[j] = all__;
+            }
+            
+        }
+        
+    }
+    
+    }
+    
+
     char *all__;
 
     

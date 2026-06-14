@@ -33,7 +33,7 @@ Vector2D find(Vector*array, int cible);
 //string gestionnary
 void cat(String *chain, char *word);
 int string_cmp(char *word1, char *word2);
-void dico(String *chain);
+void dico(String *chain, char *types);
 
 
 #endif
