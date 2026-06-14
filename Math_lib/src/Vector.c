@@ -143,6 +143,70 @@ Vector2D find(Vector *array, int cible)
         result.x = counter;
         result.y = 0;
     }
+    return (result);
+
+}
+//------------------------------------------------------------------- string 
+void cat(String *chain, char *word)
+{
+
+    chain->size = chain->size + 1;
+
+    int size = chain->size;
+
+    char **tmp = realloc(chain->string, size * sizeof(char));
+
+    chain->string = tmp;
+
+    chain->string[size-1] = word;
+
+}
+
+
+int string_cmp(char *word1, char *word2) // a rectifier !
+{
+    int __val__ = 0;
+    int i = 0;
+    while(word1[i] != '\0')
+    {
+        i++;
+    }
+    int j = 0;
+    while(word2[j] != '\0')
+    {
+        j++;
+    }
+
+    int halt = 0;
+
+    while(word1[halt] != '\0' || word2[halt] != '\0')
+    {
+        if(word1[halt] == word2[halt])
+        {
+            halt++;
+        }
+        else
+        {
+            if(word1[halt] < word2[halt])
+            {
+                //printf("%s est plus petit que %s", word1, word2);
+                __val__ = 1;
+            }
+            else 
+            {
+                //printf("%s est plus petit que %s", word2, word1);
+                __val__ = 0;
+            }
+            break;
+        }
+    }
+    return (__val__);
+}
+
+void dico(String *chain)
+{
+    char *all__;
+
     
 
 }
