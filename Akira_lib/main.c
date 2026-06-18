@@ -3,6 +3,8 @@
 #include "include/Vector.h"
 #include "include/char_chain.h"
 #include "include/mathlab.h"
+#include "include/akr55.h"
+#include "include/tensor.h"
 
 void __start(void)
 {
@@ -26,8 +28,13 @@ void __start(void)
     
     // sep(string__, ':');
     // &string, 
-    printf("%f", sqroot(5.0));
 
+    Layers MAIN_LAYERS;
+    Layers SECOND_LAYER;
+    Layers THIRD_LAYER;
+    Layers FOURTH_LAYER;
+
+   
 }
 
 int main(void)
@@ -35,4 +42,7 @@ int main(void)
     
     __start();
     return (0);
+
+    //find . -type f -name "*.c" -o -name "*.h" | xargs wc -l
+
 }

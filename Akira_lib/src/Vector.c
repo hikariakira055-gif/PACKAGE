@@ -280,3 +280,8 @@ int strfind(String *chain, char *types)
     return (is_find);
 
 }
+
+void push(No_types_Vector *vector,void *types)
+{
+    
+}
