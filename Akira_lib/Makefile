@@ -7,7 +7,8 @@ SRC  = 	src/binary.c \
 		src/Vector.c \
 		src/char_chain.c \
 		src/mathlab.c \
-		src/akr55.c main.c
+		src/akr55.c \
+		src/tensor.c main.c
 
 all : $(TARGETS)
 
