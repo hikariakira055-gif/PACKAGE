@@ -8,33 +8,20 @@
 #include "mathlab.h"
 
 
-
-typedef struct Neurone
-{
-    
-    int *port;
-    float (*activation)(Vector *array, Vector *weight);
-    
-}Neurone;
-
 typedef struct Layers
 {
     int nb_neurone;
-    Neurone *neurone_tab;
+    float *value;
+
+    float *weight;
+    float *biais;
     
 }Layers;
 
-typedef struct Model
-{
-    
-    char *name;
-    int layer_number;
-    Layers *layer;
 
-}Model;
+void init_layer(int size, Layers *layer);
+void propagation(Layers *layer1, Layers *later2);
+void Vector_dot(Vector *vectorA, Vector *B, Vector *C);
 
-int neurone(Vector *array, Vector *weight);
-
-void set_layer(int density_n, char *__LINK_TYPES, Layers *layer);
 
 #endif

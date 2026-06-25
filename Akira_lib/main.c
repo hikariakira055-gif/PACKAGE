@@ -29,10 +29,8 @@ void __start(void)
     // sep(string__, ':');
     // &string, 
 
-    Layers MAIN_LAYERS;
-    Layers SECOND_LAYER;
-    Layers THIRD_LAYER;
-    Layers FOURTH_LAYER;
+    Layers FIRST;
+    init_layer(3, &FIRST);
 
    
 }
