@@ -1,8 +1,6 @@
 #include "../include/generation_procedural.h"
 
 
-
-
 int nombre_de_voisin(World *temopraire, int x, int y, int reference)
 {
     int n = 0;
@@ -83,6 +81,7 @@ void smooth(World *world1)
 
             
         }
+        printf("\n");
     }
 
     for (int i = 0; i < WIDTH; i++)
@@ -141,3 +140,10 @@ void generate(World *world)
 
 }
 
+void smooth_level(World *ptr, int value)
+{
+    for (int i = 0; i < value; i++)
+    {
+        smooth(ptr);
+    }
+}

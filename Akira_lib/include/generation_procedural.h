@@ -1,8 +1,9 @@
 #ifndef __GEN_PROCEDURAL__H__
 #define __GEN_PROCEDURAL__H__
 
-#define WIDTH 150
-#define HEIGHT 150
+
+#define WIDTH 240
+#define HEIGHT 240
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -15,6 +16,8 @@
 #define GRIS "\033[1;30m"
 #define RESET "\033[0m"
 
+#define SMOOTH_LEVEL 10
+
 typedef struct World
 {
 
@@ -25,5 +28,8 @@ typedef struct World
 void generate(World *world);
 void smooth(World *ptr);
 int nombre_de_voisin(World *temopraire, int x, int y, int reference);
+void smooth_level(World *ptr, int value);
+
+
 
 #endif
